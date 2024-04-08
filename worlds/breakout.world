@@ -59,6 +59,91 @@
 			<pose>0 0 0 1.5707 0 0</pose>
 		</include>
 
+		<!-- Include all the yellow bricks spaced out by 1.357/2 = 0.6785 -->
+		<include>
+			<name>yellow_brick_01</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-10.0715 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_02</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-8.522 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_03</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-6.9725 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_04</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-5.423 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_05</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-3.8735 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_06</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-2.324 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_07</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-0.7745 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_08</name>
+			<uri>model://yellow_brick</uri>
+			<pose>0.7745 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_09</name>
+			<uri>model://yellow_brick</uri>
+			<pose>2.324 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_10</name>
+			<uri>model://yellow_brick</uri>
+			<pose>3.8735 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_11</name>
+			<uri>model://yellow_brick</uri>
+			<pose>5.423 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_12</name>
+			<uri>model://yellow_brick</uri>
+			<pose>6.9725 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_13</name>
+			<uri>model://yellow_brick</uri>
+			<pose>8.522 0 20 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_14</name>
+			<uri>model://yellow_brick</uri>
+			<pose>10.0715 0 20 0 0 0</pose>
+		</include>
+
 
 		<!-- keep barebones scene -->
     <scene>
@@ -67,7 +152,9 @@
 			<origin_visual>false</origin_visual>
     </scene>
 
-		<!-- <plugin name="tetrisGazeboPlugin" filename="libtetrisGazeboPlugin.so"/> -->
+
+		<plugin name="breakoutGazeboPlugin" filename="libbreakoutGazeboPlugin.so"/>
+
 
   </world>
 </sdf>

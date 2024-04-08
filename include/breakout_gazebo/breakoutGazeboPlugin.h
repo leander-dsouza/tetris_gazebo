@@ -26,37 +26,38 @@
 #define BREAKOUT_GAZEBO_BREAKOUTGAZEBOPLUGIN_H
 
 #include <ros/ros.h>
-#include <ros/package.h>
-#include <rosparam_shortcuts/rosparam_shortcuts.h>
 
-#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <gazebo_msgs/ContactsState.h>
 #include <geometry_msgs/Twist.h>
 
-#include <queue>
-#include <random>
 #include <vector>
+#include <string>
 
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/transport/TransportIface.hh>
 
 
-class breakoutGazeboPlugin: public gazebo::ModelPlugin {
+class breakoutGazeboPlugin: public gazebo::WorldPlugin {
  private:
   ros::NodeHandle nh_;
+  ros::Subscriber contacts_sub_;
 
   gazebo::physics::WorldPtr world_;
-  gazebo::physics::ModelPtr robot_model_;
-
   gazebo::event::ConnectionPtr updateConnection_;
   gazebo::transport::NodePtr node_;
 
-  bool trial = false;
+  float ball_speed_x_;
+  float ball_speed_y_;
+  bool start = false;
 
  public:
-  void Initialize();
-  void Load(gazebo::physics::ModelPtr _model, sdf::ElementPtr _sdf);
+  void Init();
+  void contactsCallback(const gazebo_msgs::ContactsState::ConstPtr& msg);
+  void Load(gazebo::physics::WorldPtr _parent, sdf::ElementPtr _sdf);
+  void setBallVelocity();
+  void deleteModel(std::string model_name);
+  void OnUpdate();
 };
 
 #endif  // BREAKOUT_GAZEBO_BREAKOUTGAZEBOPLUGIN_H

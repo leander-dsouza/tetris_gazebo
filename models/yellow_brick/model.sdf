@@ -1,26 +1,13 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
-    <model name="paddle">
-			<static>false</static>
+    <model name="yellow_brick">
+			<static>true</static>
       <link name="base_link">
-
-				<inertial>
-					<pose>0 0 0 0 0 0</pose>
-					<mass>1000000</mass>
-					<inertia>
-						<ixx>1000000</ixx>
-						<ixy>0</ixy>
-						<ixz>0</ixz>
-						<iyy>1000000</iyy>
-						<iyz>0</iyz>
-						<izz>1000000</izz>
-					</inertia>
-				</inertial>
 
 				<collision name="collision">
 					<geometry>
 						<box>
-							<size>1.5 0.2 0.2</size>
+							<size>1.357 0.2 0.2</size>
 						</box>
 					</geometry>
 
@@ -51,28 +38,17 @@
 				<visual name="visual">
 					<geometry>
 						<box>
-							<size>1.5 0.2 0.2</size>
+							<size>1.357 0.5 0.4</size>
 						</box>
 					</geometry>
 					<material>
 						<script>
 							<uri>file://media/materials/scripts/gazebo.material</uri>
-							<name>Gazebo/Turquoise</name>
+							<name>Gazebo/Yellow</name>
 						</script>
 					</material>
 				</visual>
-
       </link>
-
-			<plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
-				<robotNamespace>paddle</robotNamespace>
-				<commandTopic>cmd_vel</commandTopic>
-				<odometryTopic>odom</odometryTopic>
-				<odometryFrame>odom</odometryFrame>
-				<odometryRate>50.0</odometryRate>
-				<robotBaseFrame>base_link</robotBaseFrame>
-				<cmdTimeout>-1.0</cmdTimeout>
-			</plugin>
 
 
     </model>

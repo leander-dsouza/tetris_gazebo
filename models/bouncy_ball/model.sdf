@@ -47,9 +47,21 @@
 					</material>
         </visual>
 
+				<sensor name="collision_sensor" type="contact">
+					<update_rate>100.0</update_rate>
+					<always_on>true</always_on>
+					<contact>
+						<collision>collision</collision>
+						<topic>bumper_contact</topic>
+					</contact>
+					<plugin name="collision_plugin" filename="libgazebo_ros_bumper.so">
+						<update_rate>100.0</update_rate>
+						<always_on>true</always_on>
+						<bumperTopicName>/robot_bumper</bumperTopicName>
+						<frameName>ball_link</frameName>
+					</plugin>
+				</sensor>
       </link>
-
-		<plugin name="breakoutGazeboPlugin" filename="libbreakoutGazeboPlugin.so"/>
 
     </model>
 </sdf>

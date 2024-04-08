@@ -7,7 +7,7 @@
         <collision name="collision">
           <geometry>
             <box>
-							<size>20.0 0.5 0.5</size>
+							<size>22.5 0.5 0.5</size>
 						</box>
           </geometry>
 
@@ -38,7 +38,7 @@
         <visual name="visual">
           <geometry>
             <box>
-							<size>20.0 0.5 0.5</size>
+							<size>22.5 0.5 0.5</size>
 						</box>
           </geometry>
 
@@ -53,7 +53,7 @@
 
 
 			<link name="left_link">
-				<pose>-9.75 0 -20 0 1.5707 0</pose>
+				<pose>-11 0 -20 0 1.5707 0</pose>
 
 				<collision name="collision">
 					<geometry>
@@ -104,7 +104,7 @@
 
 
 			<link name="right_link">
-				<pose>9.75 0 -20 0 1.5707 0</pose>
+				<pose>11 0 -20 0 1.5707 0</pose>
 
 				<collision name="collision">
 					<geometry>
