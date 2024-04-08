@@ -42,8 +42,7 @@
 #include <gazebo/transport/TransportIface.hh>
 
 
-class breakoutGazeboPlugin: public gazebo::WorldPlugin
-{
+class breakoutGazeboPlugin: public gazebo::ModelPlugin {
  private:
   ros::NodeHandle nh_;
 
@@ -56,9 +55,8 @@ class breakoutGazeboPlugin: public gazebo::WorldPlugin
   bool trial = false;
 
  public:
-  void Init();
-  void Load(gazebo::physics::WorldPtr _parent, sdf::ElementPtr _sdf);
-  void OnUpdate();
+  void Initialize();
+  void Load(gazebo::physics::ModelPtr _model, sdf::ElementPtr _sdf);
 };
 
 #endif  // BREAKOUT_GAZEBO_BREAKOUTGAZEBOPLUGIN_H

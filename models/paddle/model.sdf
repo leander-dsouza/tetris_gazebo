@@ -4,34 +4,32 @@
 			<static>false</static>
       <link name="base_link">
 
-      <inertial>
-        <pose>0 0 0 0 0 0</pose>
-        <mass>1000000</mass>
-				<inertia>
-					<ixx>1000000</ixx>
-					<ixy>0</ixy>
-					<ixz>0</ixz>
-					<iyy>1000000</iyy>
-					<iyz>0</iyz>
-					<izz>1000000</izz>
-				</inertia>
-			</inertial>
+				<inertial>
+					<pose>0 0 0 0 0 0</pose>
+					<mass>1000000</mass>
+					<inertia>
+						<ixx>1000000</ixx>
+						<ixy>0</ixy>
+						<ixz>0</ixz>
+						<iyy>1000000</iyy>
+						<iyz>0</iyz>
+						<izz>1000000</izz>
+					</inertia>
+				</inertial>
 
-
-
-        <collision name="collision">
-          <geometry>
-            <box>
+				<collision name="collision">
+					<geometry>
+						<box>
 							<size>1.5 0.2 0.2</size>
 						</box>
-          </geometry>
+					</geometry>
 
-          <surface>
+					<surface>
 
-            <bounce>
-              <restitution_coefficient>2.0</restitution_coefficient>
-              <threshold>0</threshold>
-            </bounce>
+						<bounce>
+							<restitution_coefficient>2.0</restitution_coefficient>
+							<threshold>0</threshold>
+						</bounce>
 
 						<friction>
 							<ode>
@@ -40,35 +38,36 @@
 							</ode>
 						</friction>
 
-            <contact>
-              <ode>
-                <max_vel>999</max_vel>
-              </ode>
-            </contact>
+						<contact>
+							<ode>
+								<max_vel>999</max_vel>
+							</ode>
+						</contact>
 
-          </surface>
+					</surface>
 
-        </collision>
+				</collision>
 
-        <visual name="visual">
-          <geometry>
-            <box>
+				<visual name="visual">
+					<geometry>
+						<box>
 							<size>1.5 0.2 0.2</size>
 						</box>
-          </geometry>
+					</geometry>
 					<material>
-						<ambient>0.0 0.0 1.0 1</ambient>
-						<diffuse>0.0 0.0 1.0 1</diffuse>
+						<ambient>0.0 1.0 1.0 1</ambient>
+						<diffuse>0.0 1.0 1.0 1</diffuse>
 						<specular>0.1 0.1 0.1 1</specular>
 					</material>
-        </visual>
+				</visual>
 
       </link>
 
 			<plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
-				<commandTopic>paddle/cmd_vel</commandTopic>
-				<odometryTopic>paddle/odom</odometryTopic>
-				<odometryFrame>paddle/odom</odometryFrame>
+				<robotNamespace>paddle</robotNamespace>
+				<commandTopic>cmd_vel</commandTopic>
+				<odometryTopic>odom</odometryTopic>
+				<odometryFrame>odom</odometryFrame>
 				<odometryRate>50.0</odometryRate>
 				<robotBaseFrame>base_link</robotBaseFrame>
 				<cmdTimeout>-1.0</cmdTimeout>

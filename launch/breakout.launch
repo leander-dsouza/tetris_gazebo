@@ -11,4 +11,8 @@
 		<arg name="debug" value="false"/>
 	</include>
 
+	<!-- Launch paddle play node -->
+	<node name="paddle_play_node" pkg="breakout_gazebo" type="paddle_play.py" respawn="false" output="screen"/>
+
+
 </launch>

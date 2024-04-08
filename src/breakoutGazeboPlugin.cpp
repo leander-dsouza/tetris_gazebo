@@ -21,19 +21,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <gazebo/gazebo.hh>
-#include <gazebo/physics/physics.hh>
+#include <breakout_gazebo/breakoutGazeboPlugin.h>
 
-namespace gazebo {
-    class breakoutGazeboPlugin : public ModelPlugin {
-        public:
-            void Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
-                // Set the initial velocity (e.g., along the X-axis)
-                physics::LinkPtr ballLink = _model->GetLink("ball_link");
-                ignition::math::Vector3d initialVelocity(0.0, 0.0, -5.0); // Adjust as needed
-                ballLink->SetLinearVel(initialVelocity);
-            }
-    };
-    GZ_REGISTER_MODEL_PLUGIN(breakoutGazeboPlugin)
+
+
+void breakoutGazeboPlugin::Initialize() {
 }
 
+void breakoutGazeboPlugin::Load(
+  gazebo::physics::ModelPtr _model, sdf::ElementPtr _sdf) {
+  // Set the initial velocity (e.g., along the X-axis)
+  gazebo::physics::LinkPtr ballLink = _model->GetLink("ball_link");
+  ignition::math::Vector3d initialVelocity(0.0, 0.0, -5.0);
+  ballLink->SetLinearVel(initialVelocity);
+}
+
+
+GZ_REGISTER_MODEL_PLUGIN(breakoutGazeboPlugin)
