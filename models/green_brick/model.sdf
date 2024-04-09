@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <model name="green_brick">
+			<static>true</static>
+      <link name="base_link">
+
+				<collision name="collision">
+					<geometry>
+						<box>
+							<size>1.357 0.2 0.2</size>
+						</box>
+					</geometry>
+
+					<surface>
+
+						<bounce>
+							<restitution_coefficient>1.0</restitution_coefficient>
+							<threshold>0</threshold>
+						</bounce>
+
+						<friction>
+							<ode>
+								<mu>0.0</mu>
+								<mu2>0.0</mu2>
+							</ode>
+						</friction>
+
+						<contact>
+							<ode>
+								<max_vel>999</max_vel>
+							</ode>
+						</contact>
+
+					</surface>
+
+				</collision>
+
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>1.357 0.5 0.4</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/Green</name>
+						</script>
+					</material>
+				</visual>
+      </link>
+
+
+    </model>
+</sdf>

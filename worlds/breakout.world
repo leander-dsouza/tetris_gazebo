@@ -59,7 +59,7 @@
 			<pose>0 0 0 1.5707 0 0</pose>
 		</include>
 
-		<!-- Include all the yellow bricks spaced out by 1.357/2 = 0.6785 -->
+		<!-- Yellow Row 1 -->
 		<include>
 			<name>yellow_brick_01</name>
 			<uri>model://yellow_brick</uri>
@@ -144,6 +144,600 @@
 			<pose>10.0715 0 20 0 0 0</pose>
 		</include>
 
+		<!-- Yellow Row 2 -->
+		<include>
+			<name>yellow_brick_15</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-10.0715 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_16</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-8.522 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_17</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-6.9725 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_18</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-5.423 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_19</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-3.8735 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_20</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-2.324 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_21</name>
+			<uri>model://yellow_brick</uri>
+			<pose>-0.7745 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_22</name>
+			<uri>model://yellow_brick</uri>
+			<pose>0.7745 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_23</name>
+			<uri>model://yellow_brick</uri>
+			<pose>2.324 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_24</name>
+			<uri>model://yellow_brick</uri>
+			<pose>3.8735 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_25</name>
+			<uri>model://yellow_brick</uri>
+			<pose>5.423 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_26</name>
+			<uri>model://yellow_brick</uri>
+			<pose>6.9725 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_27</name>
+			<uri>model://yellow_brick</uri>
+			<pose>8.522 0 20.55 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>yellow_brick_28</name>
+			<uri>model://yellow_brick</uri>
+			<pose>10.0715 0 20.55 0 0 0</pose>
+		</include>
+
+		<!-- Green Row 1 -->
+		<include>
+			<name>green_brick_01</name>
+			<uri>model://green_brick</uri>
+			<pose>-10.0715 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_02</name>
+			<uri>model://green_brick</uri>
+			<pose>-8.522 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_03</name>
+			<uri>model://green_brick</uri>
+			<pose>-6.9725 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_04</name>
+			<uri>model://green_brick</uri>
+			<pose>-5.423 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_05</name>
+			<uri>model://green_brick</uri>
+			<pose>-3.8735 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_06</name>
+			<uri>model://green_brick</uri>
+			<pose>-2.324 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_07</name>
+			<uri>model://green_brick</uri>
+			<pose>-0.7745 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_08</name>
+			<uri>model://green_brick</uri>
+			<pose>0.7745 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_09</name>
+			<uri>model://green_brick</uri>
+			<pose>2.324 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_10</name>
+			<uri>model://green_brick</uri>
+			<pose>3.8735 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_11</name>
+			<uri>model://green_brick</uri>
+			<pose>5.423 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_12</name>
+			<uri>model://green_brick</uri>
+			<pose>6.9725 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_13</name>
+			<uri>model://green_brick</uri>
+			<pose>8.522 0 21.1 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_14</name>
+			<uri>model://green_brick</uri>
+			<pose>10.0715 0 21.1 0 0 0</pose>
+		</include>
+
+		<!-- Green Row 2 -->
+		<include>
+			<name>green_brick_15</name>
+			<uri>model://green_brick</uri>
+			<pose>-10.0715 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_16</name>
+			<uri>model://green_brick</uri>
+			<pose>-8.522 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_17</name>
+			<uri>model://green_brick</uri>
+			<pose>-6.9725 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_18</name>
+			<uri>model://green_brick</uri>
+			<pose>-5.423 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_19</name>
+			<uri>model://green_brick</uri>
+			<pose>-3.8735 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_20</name>
+			<uri>model://green_brick</uri>
+			<pose>-2.324 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_21</name>
+			<uri>model://green_brick</uri>
+			<pose>-0.7745 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_22</name>
+			<uri>model://green_brick</uri>
+			<pose>0.7745 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_23</name>
+			<uri>model://green_brick</uri>
+			<pose>2.324 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_24</name>
+			<uri>model://green_brick</uri>
+			<pose>3.8735 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_25</name>
+			<uri>model://green_brick</uri>
+			<pose>5.423 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_26</name>
+			<uri>model://green_brick</uri>
+			<pose>6.9725 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_27</name>
+			<uri>model://green_brick</uri>
+			<pose>8.522 0 21.65 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>green_brick_28</name>
+			<uri>model://green_brick</uri>
+			<pose>10.0715 0 21.65 0 0 0</pose>
+		</include>
+
+		<!-- Orange Row 1 -->
+		<include>
+			<name>orange_brick_01</name>
+			<uri>model://orange_brick</uri>
+			<pose>-10.0715 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_02</name>
+			<uri>model://orange_brick</uri>
+			<pose>-8.522 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_03</name>
+			<uri>model://orange_brick</uri>
+			<pose>-6.9725 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_04</name>
+			<uri>model://orange_brick</uri>
+			<pose>-5.423 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_05</name>
+			<uri>model://orange_brick</uri>
+			<pose>-3.8735 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_06</name>
+			<uri>model://orange_brick</uri>
+			<pose>-2.324 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_07</name>
+			<uri>model://orange_brick</uri>
+			<pose>-0.7745 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_08</name>
+			<uri>model://orange_brick</uri>
+			<pose>0.7745 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_09</name>
+			<uri>model://orange_brick</uri>
+			<pose>2.324 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_10</name>
+			<uri>model://orange_brick</uri>
+			<pose>3.8735 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_11</name>
+			<uri>model://orange_brick</uri>
+			<pose>5.423 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_12</name>
+			<uri>model://orange_brick</uri>
+			<pose>6.9725 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_13</name>
+			<uri>model://orange_brick</uri>
+			<pose>8.522 0 22.2 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_14</name>
+			<uri>model://orange_brick</uri>
+			<pose>10.0715 0 22.2 0 0 0</pose>
+		</include>
+
+		<!-- Orange Row 2 -->
+		<include>
+			<name>orange_brick_15</name>
+			<uri>model://orange_brick</uri>
+			<pose>-10.0715 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_16</name>
+			<uri>model://orange_brick</uri>
+			<pose>-8.522 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_17</name>
+			<uri>model://orange_brick</uri>
+			<pose>-6.9725 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_18</name>
+			<uri>model://orange_brick</uri>
+			<pose>-5.423 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_19</name>
+			<uri>model://orange_brick</uri>
+			<pose>-3.8735 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_20</name>
+			<uri>model://orange_brick</uri>
+			<pose>-2.324 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_21</name>
+			<uri>model://orange_brick</uri>
+			<pose>-0.7745 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_22</name>
+			<uri>model://orange_brick</uri>
+			<pose>0.7745 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_23</name>
+			<uri>model://orange_brick</uri>
+			<pose>2.324 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_24</name>
+			<uri>model://orange_brick</uri>
+			<pose>3.8735 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_25</name>
+			<uri>model://orange_brick</uri>
+			<pose>5.423 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_26</name>
+			<uri>model://orange_brick</uri>
+			<pose>6.9725 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_27</name>
+			<uri>model://orange_brick</uri>
+			<pose>8.522 0 22.75 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>orange_brick_28</name>
+			<uri>model://orange_brick</uri>
+			<pose>10.0715 0 22.75 0 0 0</pose>
+		</include>
+
+		<!-- Red Row 1 -->
+		<include>
+			<name>red_brick_01</name>
+			<uri>model://red_brick</uri>
+			<pose>-10.0715 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_02</name>
+			<uri>model://red_brick</uri>
+			<pose>-8.522 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_03</name>
+			<uri>model://red_brick</uri>
+			<pose>-6.9725 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_04</name>
+			<uri>model://red_brick</uri>
+			<pose>-5.423 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_05</name>
+			<uri>model://red_brick</uri>
+			<pose>-3.8735 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_06</name>
+			<uri>model://red_brick</uri>
+			<pose>-2.324 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_07</name>
+			<uri>model://red_brick</uri>
+			<pose>-0.7745 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_08</name>
+			<uri>model://red_brick</uri>
+			<pose>0.7745 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_09</name>
+			<uri>model://red_brick</uri>
+			<pose>2.324 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_10</name>
+			<uri>model://red_brick</uri>
+			<pose>3.8735 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_11</name>
+			<uri>model://red_brick</uri>
+			<pose>5.423 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_12</name>
+			<uri>model://red_brick</uri>
+			<pose>6.9725 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_13</name>
+			<uri>model://red_brick</uri>
+			<pose>8.522 0 23.3 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_14</name>
+			<uri>model://red_brick</uri>
+			<pose>10.0715 0 23.3 0 0 0</pose>
+		</include>
+
+		<!-- Red Row 2 -->
+		<include>
+			<name>red_brick_15</name>
+			<uri>model://red_brick</uri>
+			<pose>-10.0715 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_16</name>
+			<uri>model://red_brick</uri>
+			<pose>-8.522 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_17</name>
+			<uri>model://red_brick</uri>
+			<pose>-6.9725 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_18</name>
+			<uri>model://red_brick</uri>
+			<pose>-5.423 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_19</name>
+			<uri>model://red_brick</uri>
+			<pose>-3.8735 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_20</name>
+			<uri>model://red_brick</uri>
+			<pose>-2.324 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_21</name>
+			<uri>model://red_brick</uri>
+			<pose>-0.7745 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_22</name>
+			<uri>model://red_brick</uri>
+			<pose>0.7745 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_23</name>
+			<uri>model://red_brick</uri>
+			<pose>2.324 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_24</name>
+			<uri>model://red_brick</uri>
+			<pose>3.8735 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_25</name>
+			<uri>model://red_brick</uri>
+			<pose>5.423 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_26</name>
+			<uri>model://red_brick</uri>
+			<pose>6.9725 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_27</name>
+			<uri>model://red_brick</uri>
+			<pose>8.522 0 23.85 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>red_brick_28</name>
+			<uri>model://red_brick</uri>
+			<pose>10.0715 0 23.85 0 0 0</pose>
+		</include>
 
 		<!-- keep barebones scene -->
     <scene>
