@@ -739,6 +739,67 @@
 			<pose>10.0715 0 23.85 0 0 0</pose>
 		</include>
 
+		<!-- Live Score Counter -->
+		<include>
+			<name>zero</name>
+			<uri>model://zero</uri>
+			<pose>-8.522 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>one</name>
+			<uri>model://one</uri>
+			<pose>-6.9725 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>two</name>
+			<uri>model://two</uri>
+			<pose>-5.423 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>three</name>
+			<uri>model://three</uri>
+			<pose>-3.8735 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>four</name>
+			<uri>model://four</uri>
+			<pose>-2.324 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>five</name>
+			<uri>model://five</uri>
+			<pose>-0.7745 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>six</name>
+			<uri>model://six</uri>
+			<pose>0.7745 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>seven</name>
+			<uri>model://seven</uri>
+			<pose>2.324 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>eight</name>
+			<uri>model://eight</uri>
+			<pose>3.8735 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>nine</name>
+			<uri>model://nine</uri>
+			<pose>5.423 0 26.4 0 0 0</pose>
+		</include>
+
 		<!-- keep barebones scene -->
     <scene>
       <shadows>0</shadows>

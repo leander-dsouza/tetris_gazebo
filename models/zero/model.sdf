@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <model name="zero">
+			<static>true</static>
+
+			<!-- creating a 7 segment display -->
+
+      <link name="a">
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>1.357 0.5 0.4</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/White</name>
+						</script>
+					</material>
+				</visual>
+      </link>
+
+			<link name="b">
+				<pose>0.4785 0 -0.4785 0 1.5707 0</pose>
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>1.357 0.5 0.4</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/White</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+
+			<link name="c">
+				<pose>0.4785 0 -1.4355 0 1.5707 0</pose>
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>1.357 0.5 0.4</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/White</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+
+			<link name="d">
+				<pose>0 0 -1.914 0 0 0</pose>
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>1.357 0.5 0.4</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/White</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+
+			<link name="e">
+				<pose>-0.4785 0 -1.4355 0 -1.5707 0</pose>
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>1.357 0.5 0.4</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/White</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+
+			<link name="f">
+				<pose>-0.4785 0 -0.4785 0 -1.5707 0</pose>
+				<visual name="visual">
+					<geometry>
+						<box>
+							<size>1.357 0.5 0.4</size>
+						</box>
+					</geometry>
+					<material>
+						<script>
+							<uri>file://media/materials/scripts/gazebo.material</uri>
+							<name>Gazebo/White</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+
+    </model>
+</sdf>
