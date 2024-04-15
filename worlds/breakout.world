@@ -740,64 +740,24 @@
 		</include>
 
 		<!-- Live Score Counter -->
+
+
 		<include>
-			<name>zero</name>
+			<name>zero0</name>
 			<uri>model://zero</uri>
 			<pose>-8.522 0 26.4 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>one</name>
-			<uri>model://one</uri>
+			<name>zero1</name>
+			<uri>model://zero</uri>
 			<pose>-6.9725 0 26.4 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>two</name>
-			<uri>model://two</uri>
+			<name>zero2</name>
+			<uri>model://zero</uri>
 			<pose>-5.423 0 26.4 0 0 0</pose>
-		</include>
-
-		<include>
-			<name>three</name>
-			<uri>model://three</uri>
-			<pose>-3.8735 0 26.4 0 0 0</pose>
-		</include>
-
-		<include>
-			<name>four</name>
-			<uri>model://four</uri>
-			<pose>-2.324 0 26.4 0 0 0</pose>
-		</include>
-
-		<include>
-			<name>five</name>
-			<uri>model://five</uri>
-			<pose>-0.7745 0 26.4 0 0 0</pose>
-		</include>
-
-		<include>
-			<name>six</name>
-			<uri>model://six</uri>
-			<pose>0.7745 0 26.4 0 0 0</pose>
-		</include>
-
-		<include>
-			<name>seven</name>
-			<uri>model://seven</uri>
-			<pose>2.324 0 26.4 0 0 0</pose>
-		</include>
-
-		<include>
-			<name>eight</name>
-			<uri>model://eight</uri>
-			<pose>3.8735 0 26.4 0 0 0</pose>
-		</include>
-
-		<include>
-			<name>nine</name>
-			<uri>model://nine</uri>
-			<pose>5.423 0 26.4 0 0 0</pose>
 		</include>
 
 		<!-- keep barebones scene -->

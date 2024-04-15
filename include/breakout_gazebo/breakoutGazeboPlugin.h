@@ -26,6 +26,7 @@
 #define BREAKOUT_GAZEBO_BREAKOUTGAZEBOPLUGIN_H
 
 #include <ros/ros.h>
+#include <ros/package.h>
 
 #include <gazebo_msgs/ContactsState.h>
 #include <geometry_msgs/Twist.h>
@@ -50,6 +51,15 @@ class breakoutGazeboPlugin: public gazebo::WorldPlugin {
   float ball_speed_x_;
   float ball_speed_y_;
   bool start = false;
+  int score_ = 0;
+
+  std::string prev_hundreds_model = "zero0";
+  std::string prev_tens_model = "zero1";
+  std::string prev_ones_model = "zero2";
+
+  ignition::math::Pose3d hundreds_pose_;
+  ignition::math::Pose3d tens_pose_;
+  ignition::math::Pose3d ones_pose_;
 
  public:
   void Init();
@@ -58,6 +68,8 @@ class breakoutGazeboPlugin: public gazebo::WorldPlugin {
   void setBallVelocity();
   void deleteModel(std::string model_name);
   void OnUpdate();
+  void updateScore();
+  void spawnModel(std::string model_name, ignition::math::Pose3d pose, int tag);
 };
 
 #endif  // BREAKOUT_GAZEBO_BREAKOUTGAZEBOPLUGIN_H
