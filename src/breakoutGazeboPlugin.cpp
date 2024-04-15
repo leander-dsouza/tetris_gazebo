@@ -25,6 +25,33 @@
 
 
 
+std::string getLiteralWord(int num) {
+  switch (num) {
+    case 0:
+      return "zero";
+    case 1:
+      return "one";
+    case 2:
+      return "two";
+    case 3:
+      return "three";
+    case 4:
+      return "four";
+    case 5:
+      return "five";
+    case 6:
+      return "six";
+    case 7:
+      return "seven";
+    case 8:
+      return "eight";
+    case 9:
+      return "nine";
+    default:
+      return "zero";
+  }
+}
+
 void breakoutGazeboPlugin::Init() {
   node_ = gazebo::transport::NodePtr(new gazebo::transport::Node());
   node_->Init("breakout_gazebo");
@@ -33,12 +60,17 @@ void breakoutGazeboPlugin::Init() {
     ros::M_string(), "breakout_gazebo_node",
     ros::init_options::NoSigintHandler);
 
-  ball_speed_x_ = 0.0;
+  ball_speed_x_limit_ = 7.0;
   ball_speed_y_ = -14.0;
 
+  ball_pose_ = ignition::math::Pose3d(0, 0, 17, 0, 0, 0);
   hundreds_pose_ = ignition::math::Pose3d(-8.522, 0, 26.4, 0, 0, 0);
   tens_pose_ = ignition::math::Pose3d(-6.9725, 0, 26.4, 0, 0, 0);
   ones_pose_ = ignition::math::Pose3d(-5.423, 0, 26.4, 0, 0, 0);
+  lives_pose_ = ignition::math::Pose3d(2.324, 0, 29.5, 0, 0, 0);
+  highscore_hundreds_pose_ = ignition::math::Pose3d(3.8735, 0, 26.4, 0, 0, 0);
+  highscore_tens_pose_ = ignition::math::Pose3d(5.423, 0, 26.4, 0, 0, 0);
+  highscore_ones_pose_ = ignition::math::Pose3d(6.9725, 0, 26.4, 0, 0, 0);
 
   contacts_sub_ = nh_.subscribe(
     "/robot_bumper", 1, &breakoutGazeboPlugin::contactsCallback, this);
@@ -72,37 +104,47 @@ void breakoutGazeboPlugin::spawnModel(
   world_->InsertModelSDF(sdf);
 }
 
-std::string getLiteralWord(int digit) {
-  switch (digit) {
-    case 0:
-      return "zero";
-    case 1:
-      return "one";
-    case 2:
-      return "two";
-    case 3:
-      return "three";
-    case 4:
-      return "four";
-    case 5:
-      return "five";
-    case 6:
-      return "six";
-    case 7:
-      return "seven";
-    case 8:
-      return "eight";
-    case 9:
-      return "nine";
-    default:
-      return "zero";
+void breakoutGazeboPlugin::updateHighScore() {
+  ROS_INFO("Highscore: %d", highscore_);
+
+  // extract three digits from the highscore
+  int hundreds = highscore_ / 100;
+  int tens = (highscore_ / 10) % 10;
+  int ones = highscore_ % 10;
+
+  // spawn the highscore models
+  std::string curr_hundreds_model = getLiteralWord(hundreds);
+  std::string curr_tens_model = getLiteralWord(tens);
+  std::string curr_ones_model = getLiteralWord(ones);
+
+  // if the current models are different from the previous models
+  if (curr_hundreds_model + "3" != prev_highscore_hundreds_model_) {
+    deleteModel(prev_highscore_hundreds_model_);
+    spawnModel(curr_hundreds_model, highscore_hundreds_pose_, 3);
+    prev_highscore_hundreds_model_ = curr_hundreds_model + "3";
+  }
+
+  if (curr_tens_model + "4" != prev_highscore_tens_model_) {
+    deleteModel(prev_highscore_tens_model_);
+    spawnModel(curr_tens_model, highscore_tens_pose_, 4);
+    prev_highscore_tens_model_ = curr_tens_model + "4";
+  }
+
+  if (curr_ones_model + "5" != prev_highscore_ones_model_) {
+    deleteModel(prev_highscore_ones_model_);
+    spawnModel(curr_ones_model, highscore_ones_pose_, 5);
+    prev_highscore_ones_model_ = curr_ones_model + "5";
   }
 }
-
 
 void breakoutGazeboPlugin::updateScore() {
   score_++;
   ROS_INFO("Score: %d", score_);
+
+  if (score_ > highscore_) {
+    highscore_ = score_;
+    updateHighScore();
+  }
 
   // extract three digits from the score
   int hundreds = score_ / 100;
@@ -115,34 +157,85 @@ void breakoutGazeboPlugin::updateScore() {
   std::string curr_ones_model = getLiteralWord(ones);
 
   // if the current models are different from the previous models
-  if (curr_hundreds_model + "0" != prev_hundreds_model) {
-    deleteModel(prev_hundreds_model);
+  if (curr_hundreds_model + "0" != prev_hundreds_model_) {
+    deleteModel(prev_hundreds_model_);
     spawnModel(curr_hundreds_model, hundreds_pose_, 0);
-    prev_hundreds_model = curr_hundreds_model + "0";
+    prev_hundreds_model_ = curr_hundreds_model + "0";
   }
 
-  if (curr_tens_model + "1" != prev_tens_model) {
-    deleteModel(prev_tens_model);
+  if (curr_tens_model + "1" != prev_tens_model_) {
+    deleteModel(prev_tens_model_);
     spawnModel(curr_tens_model, tens_pose_, 1);
-    prev_tens_model = curr_tens_model + "1";
+    prev_tens_model_ = curr_tens_model + "1";
   }
-  // the ones place model is always different
-  // dont spawn new model if the previous model still exists
-  for (int i = 0; i < 10; i++) {
-    std::string model_name = getLiteralWord(i) + "2";
-    if (world_->ModelByName(model_name)) {
-      deleteModel(model_name);
-    }
-  }
-  spawnModel(curr_ones_model, ones_pose_, 2);
-  prev_ones_model = curr_ones_model + "2";
 
+  if (curr_ones_model + "2" != prev_ones_model_) {
+    deleteModel(prev_ones_model_);
+    spawnModel(curr_ones_model, ones_pose_, 2);
+    prev_ones_model_ = curr_ones_model + "2";
+  }
 }
 
+
+void breakoutGazeboPlugin::respawnBall() {
+  gazebo::physics::ModelPtr ball_model = world_->ModelByName("bouncy_ball");
+  gazebo::physics::LinkPtr ballLink = ball_model->GetLink("ball_link");
+
+  // stop the ball for 2 seconds
+  ignition::math::Vector3d zeroVelocity(0.0, 0.0, 0.0);
+  ballLink->SetLinearVel(zeroVelocity);
+  ballLink->SetAngularVel(zeroVelocity);
+  // std::this_thread::sleep_for(std::chrono::seconds(2));
+
+  // set the ball to the starting position
+  ballLink->SetWorldPose(ball_pose_);
+
+  // set random initial velocity but ensure magnitude is constant
+  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+  std::default_random_engine generator(seed);
+  std::uniform_real_distribution<double> distribution(
+    -ball_speed_x_limit_, ball_speed_x_limit_);
+
+  // set initial velocity
+  float ball_speed_x = distribution(generator);
+
+  ignition::math::Vector3d initialVelocity(ball_speed_x, 0.0, ball_speed_y_);
+  ballLink->SetLinearVel(initialVelocity);
+}
+
+void breakoutGazeboPlugin::updateLives() {
+  lives_ += 1;
+  ROS_INFO("Lives: %d", lives_);
+
+  if (lives_ == 4) {
+    ROS_INFO("Game Over");
+    lives_ = 0;
+    score_ = -1;
+    updateLives();
+    updateScore();
+  }
+
+  // delete the previous lives model
+  deleteModel(prev_lives_model_);
+
+  // spawn the current lives model
+  std::string curr_lives_model = getLiteralWord(lives_);
+  spawnModel(curr_lives_model, lives_pose_, 7);
+
+  // update the previous lives model
+  prev_lives_model_ = curr_lives_model + "7";
+}
 
 void breakoutGazeboPlugin::contactsCallback(
   const gazebo_msgs::ContactsState::ConstPtr& msg) {
   if (msg->states.size() > 0) {
+    // if the ball collides with bottom wall, move it to the starting position
+    if (msg->states[0].collision2_name == "breakout_base::link::collision") {
+      respawnBall();
+      updateLives();
+    }
+
+
     // delete model if collision2_name has the name brick in it
     if (msg->states[0].collision2_name.find("brick") != std::string::npos) {
       std::string model_name = msg->states[0].collision2_name;
@@ -150,10 +243,10 @@ void breakoutGazeboPlugin::contactsCallback(
       model_name = model_name.substr(0, model_name.find("::"));
       deleteModel(model_name);
 
-      // check if there are remaining ones model that is not prev_ones_model
+      // check if there are remaining ones model that is not prev_ones_model_
       for (int i = 0; i < 10; i++) {
         std::string model_name = getLiteralWord(i) + "2";
-        if (world_->ModelByName(model_name) && model_name != prev_ones_model) {
+        if (world_->ModelByName(model_name) && model_name != prev_ones_model_) {
           deleteModel(model_name);
         }
       }
@@ -167,14 +260,6 @@ void breakoutGazeboPlugin::deleteModel(std::string model_name) {
   world_->RemoveModel(model);
 }
 
-
-void breakoutGazeboPlugin::setBallVelocity() {
-  gazebo::physics::ModelPtr ball_model = world_->ModelByName("bouncy_ball");
-  gazebo::physics::LinkPtr ballLink = ball_model->GetLink("ball_link");
-  ignition::math::Vector3d initialVelocity(ball_speed_x_, 0.0, ball_speed_y_);
-  ballLink->SetLinearVel(initialVelocity);
-}
-
 void breakoutGazeboPlugin::Load(
   gazebo::physics::WorldPtr _parent, sdf::ElementPtr _sdf) {
   world_ = _parent;
@@ -184,7 +269,7 @@ void breakoutGazeboPlugin::Load(
 
 void breakoutGazeboPlugin::OnUpdate() {
   if (!start) {
-    setBallVelocity();
+    respawnBall();
     start = true;
   }
 }

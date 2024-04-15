@@ -13,7 +13,7 @@
           <surface>
 
             <bounce>
-              <restitution_coefficient>2.0</restitution_coefficient>
+              <restitution_coefficient>1.0</restitution_coefficient>
               <threshold>0</threshold>
             </bounce>
 
@@ -48,14 +48,14 @@
         </visual>
 
 				<sensor name="collision_sensor" type="contact">
-					<update_rate>100.0</update_rate>
+					<update_rate>10.0</update_rate>
 					<always_on>true</always_on>
 					<contact>
 						<collision>collision</collision>
 						<topic>bumper_contact</topic>
 					</contact>
 					<plugin name="collision_plugin" filename="libgazebo_ros_bumper.so">
-						<update_rate>100.0</update_rate>
+						<update_rate>10.0</update_rate>
 						<always_on>true</always_on>
 						<bumperTopicName>/robot_bumper</bumperTopicName>
 						<frameName>ball_link</frameName>

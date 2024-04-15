@@ -38,7 +38,7 @@
 		<!-- A bouncy ball -->
 		<include>
 			<uri>model://bouncy_ball</uri>
-			<pose>0 0 10 0 0 0</pose>
+			<pose>0 0 17 0 0 0</pose>
 		</include>
 
 		<!-- A boundary -->
@@ -740,8 +740,6 @@
 		</include>
 
 		<!-- Live Score Counter -->
-
-
 		<include>
 			<name>zero0</name>
 			<uri>model://zero</uri>
@@ -758,6 +756,39 @@
 			<name>zero2</name>
 			<uri>model://zero</uri>
 			<pose>-5.423 0 26.4 0 0 0</pose>
+		</include>
+
+		<!-- High Score Counter -->
+		<include>
+			<name>zero3</name>
+			<uri>model://zero</uri>
+			<pose>3.8735 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>zero4</name>
+			<uri>model://zero</uri>
+			<pose>5.423 0 26.4 0 0 0</pose>
+		</include>
+
+		<include>
+			<name>zero5</name>
+			<uri>model://zero</uri>
+			<pose>6.9725 0 26.4 0 0 0</pose>
+		</include>
+
+		<!-- Top left decoration -->
+		<include>
+			<name>one6</name>
+			<uri>model://one</uri>
+			<pose>-10.0715 0 29.5 0 0 0</pose>
+		</include>
+
+		<!-- Lives Counter -->
+		<include>
+			<name>one7</name>
+			<uri>model://one</uri>
+			<pose>2.324 0 29.5 0 0 0</pose>
 		</include>
 
 		<!-- keep barebones scene -->

@@ -48,18 +48,29 @@ class breakoutGazeboPlugin: public gazebo::WorldPlugin {
   gazebo::event::ConnectionPtr updateConnection_;
   gazebo::transport::NodePtr node_;
 
-  float ball_speed_x_;
+  float ball_speed_x_limit_;
   float ball_speed_y_;
   bool start = false;
   int score_ = 0;
+  int highscore_ = 0;
+  int lives_ = 1;
 
-  std::string prev_hundreds_model = "zero0";
-  std::string prev_tens_model = "zero1";
-  std::string prev_ones_model = "zero2";
+  std::string prev_hundreds_model_ = "zero0";
+  std::string prev_tens_model_ = "zero1";
+  std::string prev_ones_model_ = "zero2";
+  std::string prev_highscore_hundreds_model_ = "zero3";
+  std::string prev_highscore_tens_model_ = "zero4";
+  std::string prev_highscore_ones_model_ = "zero5";
+  std::string prev_lives_model_ = "one7";
 
+  ignition::math::Pose3d ball_pose_;
   ignition::math::Pose3d hundreds_pose_;
   ignition::math::Pose3d tens_pose_;
   ignition::math::Pose3d ones_pose_;
+  ignition::math::Pose3d highscore_hundreds_pose_;
+  ignition::math::Pose3d highscore_tens_pose_;
+  ignition::math::Pose3d highscore_ones_pose_;
+  ignition::math::Pose3d lives_pose_;
 
  public:
   void Init();
@@ -69,7 +80,10 @@ class breakoutGazeboPlugin: public gazebo::WorldPlugin {
   void deleteModel(std::string model_name);
   void OnUpdate();
   void updateScore();
+  void updateHighScore();
+  void updateLives();
   void spawnModel(std::string model_name, ignition::math::Pose3d pose, int tag);
+  void respawnBall();
 };
 
 #endif  // BREAKOUT_GAZEBO_BREAKOUTGAZEBOPLUGIN_H
