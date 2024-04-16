@@ -105,8 +105,6 @@ void breakoutGazeboPlugin::spawnModel(
 }
 
 void breakoutGazeboPlugin::updateHighScore() {
-  ROS_INFO("Highscore: %d", highscore_);
-
   // extract three digits from the highscore
   int hundreds = highscore_ / 100;
   int tens = (highscore_ / 10) % 10;
@@ -166,8 +164,6 @@ void breakoutGazeboPlugin::respawnBricks() {
 }
 
 void breakoutGazeboPlugin::updateScore() {
-  ROS_INFO("Score: %d", score_);
-
   if (score_ > highscore_) {
     highscore_ = score_;
     updateHighScore();
@@ -177,6 +173,9 @@ void breakoutGazeboPlugin::updateScore() {
     respawnBricks();
     respawnBall(true);
     ROS_INFO("Screen 2");
+    hit_counter_ = 0;
+    red_hit_ = false;
+    orange_hit_ = false;
   }
 
   if (score_ == 896) {
@@ -187,6 +186,9 @@ void breakoutGazeboPlugin::updateScore() {
     updateLives();
     updateScore();
     respawnBall(true);
+    hit_counter_ = 0;
+    red_hit_ = false;
+    orange_hit_ = false;
   }
 
   // extract three digits from the score
@@ -248,7 +250,6 @@ void breakoutGazeboPlugin::respawnBall(bool wait) {
 
 void breakoutGazeboPlugin::updateLives() {
   bool wait = false;
-
   lives_ += 1;
   ROS_INFO("Lives: %d", lives_);
 
@@ -259,6 +260,9 @@ void breakoutGazeboPlugin::updateLives() {
     score_ = -1;
     updateLives();
     updateScore();
+    hit_counter_ = 0;
+    red_hit_ = false;
+    orange_hit_ = false;
     wait = true;
   }
 
@@ -276,9 +280,21 @@ void breakoutGazeboPlugin::updateLives() {
   respawnBall(wait);
 }
 
+void breakoutGazeboPlugin::increaseBallSpeed(float factor) {
+  gazebo::physics::ModelPtr ball_model = world_->ModelByName("bouncy_ball");
+  gazebo::physics::LinkPtr ballLink = ball_model->GetLink("ball_link");
+
+  ignition::math::Vector3d currentVelocity = ballLink->WorldLinearVel();
+  ignition::math::Vector3d newVelocity(
+    currentVelocity.X() * (1 + factor), currentVelocity.Y() * (1 + factor),
+    currentVelocity.Z());
+  ballLink->SetLinearVel(newVelocity);
+}
+
 void breakoutGazeboPlugin::contactsCallback(
   const gazebo_msgs::ContactsState::ConstPtr& msg) {
   if (msg->states.size() > 0) {
+
     // if the ball collides with bottom wall, move it to the starting position
     if (msg->states[0].collision2_name == "breakout_base::link::collision") {
       updateLives();
@@ -291,13 +307,33 @@ void breakoutGazeboPlugin::contactsCallback(
       model_name = model_name.substr(0, model_name.find("::"));
       deleteModel(model_name);
 
-      // // check if there are remaining ones model that is not prev_ones_model_
-      // for (int i = 0; i < 10; i++) {
-      //   std::string model_name = getLiteralWord(i) + "2";
-      //   if (world_->ModelByName(model_name) && model_name != prev_ones_model_) {
-      //     deleteModel(model_name);
-      //   }
-      // }
+      // .............. Ball speed increment logic
+      hit_counter_ += 1;
+
+      if (hit_counter_ == 4) {
+        // increase the speed of the ball by 150%
+        increaseBallSpeed(1.5);
+        ROS_INFO("Speed increased by 150 percent");
+      }
+
+      if (hit_counter_ == 12) {
+        // increase the speed of the ball by 150%
+        increaseBallSpeed(1.5);
+        ROS_INFO("Speed increased by 150 percent");
+      }
+
+      if (model_name.find("orange") != std::string::npos && !orange_hit_) {
+        orange_hit_ = true;
+        // increase the speed of the ball by 150%
+        increaseBallSpeed(1.5);
+        ROS_INFO("Speed increased by 150 percent");
+      } else if (model_name.find("red") != std::string::npos && !red_hit_) {
+        red_hit_ = true;
+        // increase the speed of the ball by 150%
+        increaseBallSpeed(1.5);
+        ROS_INFO("Speed increased by 150 percent");
+      }
+      // ............................................
 
       if (model_name.find("yellow") != std::string::npos) {
         score_ += 1;

@@ -51,9 +51,12 @@ class breakoutGazeboPlugin: public gazebo::WorldPlugin {
   float ball_speed_x_limit_;
   float ball_speed_y_;
   bool start = false;
+  bool orange_hit_ = false;
+  bool red_hit_ = false;
   int score_ = 0;
   int highscore_ = 0;
   int lives_ = 1;
+  int hit_counter_ = 0;
 
   std::string prev_hundreds_model_ = "zero0";
   std::string prev_tens_model_ = "zero1";
@@ -86,6 +89,7 @@ class breakoutGazeboPlugin: public gazebo::WorldPlugin {
     ignition::math::Pose3d pose, std::string tag);
   void respawnBall(bool wait);
   void respawnBricks();
+  void increaseBallSpeed(float factor);
 };
 
 #endif  // BREAKOUT_GAZEBO_BREAKOUTGAZEBOPLUGIN_H

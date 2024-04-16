@@ -13,7 +13,7 @@ class KeyDrive():
 
         update_rate = 50
         freq = 1. / update_rate
-        self.speed = 10  # m/s
+        self.speed = 20  # m/s
 
         # Publishers
         self.cmd_pub = rospy.Publisher('/paddle/cmd_vel', Twist, queue_size=10)
