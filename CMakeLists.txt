@@ -16,7 +16,6 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
   ${GAZEBO_INCLUDE_DIRS}
-  ${YAML_INCLUDE_DIRS}
 )
 
 link_directories(${GAZEBO_LIBRARY_DIRS})
@@ -24,5 +23,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
 add_library(breakoutGazeboPlugin SHARED src/breakoutGazeboPlugin.cpp)
 target_link_libraries(breakoutGazeboPlugin ${catkin_LIBRARIES}
-  ${GAZEBO_LIBRARIES} yaml-cpp
+  ${GAZEBO_LIBRARIES}
 )

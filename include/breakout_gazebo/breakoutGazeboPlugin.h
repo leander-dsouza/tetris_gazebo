@@ -30,7 +30,6 @@
 
 #include <gazebo_msgs/ContactsState.h>
 #include <geometry_msgs/Twist.h>
-#include <yaml-cpp/yaml.h>
 
 #include <vector>
 #include <string>
