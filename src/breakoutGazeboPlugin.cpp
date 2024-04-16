@@ -294,7 +294,6 @@ void breakoutGazeboPlugin::increaseBallSpeed(float factor) {
 void breakoutGazeboPlugin::contactsCallback(
   const gazebo_msgs::ContactsState::ConstPtr& msg) {
   if (msg->states.size() > 0) {
-
     // if the ball collides with bottom wall, move it to the starting position
     if (msg->states[0].collision2_name == "breakout_base::link::collision") {
       updateLives();

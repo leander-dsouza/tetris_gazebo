@@ -17,6 +17,7 @@
 	<build_depend>gazebo_msgs</build_depend>
 	<exec_depend>gazebo_msgs</exec_depend>
 	<build_export_depend>gazebo_msgs</build_export_depend>
+	<build_depend>roslint</build_depend>
 
 	<depend>gazebo_ros</depend>
 	<depend>gazebo</depend>
