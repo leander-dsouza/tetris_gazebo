@@ -78,7 +78,7 @@ void breakoutGazeboPlugin::Init() {
 
 
 void breakoutGazeboPlugin::spawnModel(
-  std::string model_name, ignition::math::Pose3d pose, int tag) {
+  std::string model_name, ignition::math::Pose3d pose, std::string tag) {
   // open the model file and save it to a string
   std::string model_string, line, model_path;
   sdf::SDF sdf;
@@ -97,7 +97,7 @@ void breakoutGazeboPlugin::spawnModel(
   sdf_model = sdf.Root()->GetElement("model");
 
   // set pose
-  sdf_model->GetAttribute("name")->Set(model_name + std::to_string(tag));
+  sdf_model->GetAttribute("name")->Set(model_name + tag);
   sdf_model->GetElement("pose")->Set(pose);
 
   // spawn model
@@ -120,30 +120,73 @@ void breakoutGazeboPlugin::updateHighScore() {
   // if the current models are different from the previous models
   if (curr_hundreds_model + "3" != prev_highscore_hundreds_model_) {
     deleteModel(prev_highscore_hundreds_model_);
-    spawnModel(curr_hundreds_model, highscore_hundreds_pose_, 3);
+    spawnModel(curr_hundreds_model, highscore_hundreds_pose_, "3");
     prev_highscore_hundreds_model_ = curr_hundreds_model + "3";
   }
 
   if (curr_tens_model + "4" != prev_highscore_tens_model_) {
     deleteModel(prev_highscore_tens_model_);
-    spawnModel(curr_tens_model, highscore_tens_pose_, 4);
+    spawnModel(curr_tens_model, highscore_tens_pose_, "4");
     prev_highscore_tens_model_ = curr_tens_model + "4";
   }
 
   if (curr_ones_model + "5" != prev_highscore_ones_model_) {
     deleteModel(prev_highscore_ones_model_);
-    spawnModel(curr_ones_model, highscore_ones_pose_, 5);
+    spawnModel(curr_ones_model, highscore_ones_pose_, "5");
     prev_highscore_ones_model_ = curr_ones_model + "5";
   }
 }
 
+void breakoutGazeboPlugin::respawnBricks() {
+  // delete all the bricks
+  std::vector<std::string> colours = {"yellow", "green", "orange", "red"};
+  int row_counter = 0;
+
+  // spawn the bricks
+  for (int i = 0; i < 4; i++) {
+    for (int j = 1; j <= 28; j++) {
+      std::string model_name = colours[i] + "_brick";
+
+      // spawn the brick if it is not in scene
+      if (world_->ModelByName(model_name + "_" + std::to_string(j))) {
+        continue;
+      }
+
+      if (j > 14) {
+        row_counter = i + 1;
+      } else {
+        row_counter = i + 2;
+      }
+
+      ignition::math::Pose3d pose(
+        -11.621 + j * 1.5495, 0, 19.45 + 0.55 * row_counter, 0, 0, 0);
+      spawnModel(model_name, pose, "_" + std::to_string(j));
+    }
+  }
+}
+
 void breakoutGazeboPlugin::updateScore() {
-  score_++;
   ROS_INFO("Score: %d", score_);
 
   if (score_ > highscore_) {
     highscore_ = score_;
     updateHighScore();
+  }
+
+  if (score_ == 448) {
+    respawnBricks();
+    respawnBall(true);
+    ROS_INFO("Screen 2");
+  }
+
+  if (score_ == 896) {
+    ROS_INFO("You Win");
+    respawnBricks();
+    lives_ = 0;
+    score_ = -1;
+    updateLives();
+    updateScore();
+    respawnBall(true);
   }
 
   // extract three digits from the score
@@ -159,25 +202,24 @@ void breakoutGazeboPlugin::updateScore() {
   // if the current models are different from the previous models
   if (curr_hundreds_model + "0" != prev_hundreds_model_) {
     deleteModel(prev_hundreds_model_);
-    spawnModel(curr_hundreds_model, hundreds_pose_, 0);
+    spawnModel(curr_hundreds_model, hundreds_pose_, "0");
     prev_hundreds_model_ = curr_hundreds_model + "0";
   }
 
   if (curr_tens_model + "1" != prev_tens_model_) {
     deleteModel(prev_tens_model_);
-    spawnModel(curr_tens_model, tens_pose_, 1);
+    spawnModel(curr_tens_model, tens_pose_, "1");
     prev_tens_model_ = curr_tens_model + "1";
   }
 
   if (curr_ones_model + "2" != prev_ones_model_) {
     deleteModel(prev_ones_model_);
-    spawnModel(curr_ones_model, ones_pose_, 2);
+    spawnModel(curr_ones_model, ones_pose_, "2");
     prev_ones_model_ = curr_ones_model + "2";
   }
 }
 
-
-void breakoutGazeboPlugin::respawnBall() {
+void breakoutGazeboPlugin::respawnBall(bool wait) {
   gazebo::physics::ModelPtr ball_model = world_->ModelByName("bouncy_ball");
   gazebo::physics::LinkPtr ballLink = ball_model->GetLink("ball_link");
 
@@ -185,8 +227,9 @@ void breakoutGazeboPlugin::respawnBall() {
   ignition::math::Vector3d zeroVelocity(0.0, 0.0, 0.0);
   ballLink->SetLinearVel(zeroVelocity);
   ballLink->SetAngularVel(zeroVelocity);
-  // std::this_thread::sleep_for(std::chrono::seconds(2));
-
+  if (wait) {
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+  }
   // set the ball to the starting position
   ballLink->SetWorldPose(ball_pose_);
 
@@ -204,15 +247,19 @@ void breakoutGazeboPlugin::respawnBall() {
 }
 
 void breakoutGazeboPlugin::updateLives() {
+  bool wait = false;
+
   lives_ += 1;
   ROS_INFO("Lives: %d", lives_);
 
   if (lives_ == 4) {
+    respawnBricks();
     ROS_INFO("Game Over");
     lives_ = 0;
     score_ = -1;
     updateLives();
     updateScore();
+    wait = true;
   }
 
   // delete the previous lives model
@@ -220,10 +267,13 @@ void breakoutGazeboPlugin::updateLives() {
 
   // spawn the current lives model
   std::string curr_lives_model = getLiteralWord(lives_);
-  spawnModel(curr_lives_model, lives_pose_, 7);
+  spawnModel(curr_lives_model, lives_pose_, "7");
 
   // update the previous lives model
   prev_lives_model_ = curr_lives_model + "7";
+
+  // respawn the ball
+  respawnBall(wait);
 }
 
 void breakoutGazeboPlugin::contactsCallback(
@@ -231,10 +281,8 @@ void breakoutGazeboPlugin::contactsCallback(
   if (msg->states.size() > 0) {
     // if the ball collides with bottom wall, move it to the starting position
     if (msg->states[0].collision2_name == "breakout_base::link::collision") {
-      respawnBall();
       updateLives();
     }
-
 
     // delete model if collision2_name has the name brick in it
     if (msg->states[0].collision2_name.find("brick") != std::string::npos) {
@@ -243,12 +291,22 @@ void breakoutGazeboPlugin::contactsCallback(
       model_name = model_name.substr(0, model_name.find("::"));
       deleteModel(model_name);
 
-      // check if there are remaining ones model that is not prev_ones_model_
-      for (int i = 0; i < 10; i++) {
-        std::string model_name = getLiteralWord(i) + "2";
-        if (world_->ModelByName(model_name) && model_name != prev_ones_model_) {
-          deleteModel(model_name);
-        }
+      // // check if there are remaining ones model that is not prev_ones_model_
+      // for (int i = 0; i < 10; i++) {
+      //   std::string model_name = getLiteralWord(i) + "2";
+      //   if (world_->ModelByName(model_name) && model_name != prev_ones_model_) {
+      //     deleteModel(model_name);
+      //   }
+      // }
+
+      if (model_name.find("yellow") != std::string::npos) {
+        score_ += 1;
+      } else if (model_name.find("green") != std::string::npos) {
+        score_ += 3;
+      } else if (model_name.find("orange") != std::string::npos) {
+        score_ += 5;
+      } else if (model_name.find("red") != std::string::npos) {
+        score_ += 7;
       }
       updateScore();
     }
@@ -269,7 +327,7 @@ void breakoutGazeboPlugin::Load(
 
 void breakoutGazeboPlugin::OnUpdate() {
   if (!start) {
-    respawnBall();
+    respawnBall(false);
     start = true;
   }
 }

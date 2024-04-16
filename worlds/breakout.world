@@ -61,55 +61,55 @@
 
 		<!-- Yellow Row 1 -->
 		<include>
-			<name>yellow_brick_01</name>
+			<name>yellow_brick_1</name>
 			<uri>model://yellow_brick</uri>
 			<pose>-10.0715 0 20 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>yellow_brick_02</name>
+			<name>yellow_brick_2</name>
 			<uri>model://yellow_brick</uri>
 			<pose>-8.522 0 20 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>yellow_brick_03</name>
+			<name>yellow_brick_3</name>
 			<uri>model://yellow_brick</uri>
 			<pose>-6.9725 0 20 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>yellow_brick_04</name>
+			<name>yellow_brick_4</name>
 			<uri>model://yellow_brick</uri>
 			<pose>-5.423 0 20 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>yellow_brick_05</name>
+			<name>yellow_brick_5</name>
 			<uri>model://yellow_brick</uri>
 			<pose>-3.8735 0 20 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>yellow_brick_06</name>
+			<name>yellow_brick_6</name>
 			<uri>model://yellow_brick</uri>
 			<pose>-2.324 0 20 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>yellow_brick_07</name>
+			<name>yellow_brick_7</name>
 			<uri>model://yellow_brick</uri>
 			<pose>-0.7745 0 20 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>yellow_brick_08</name>
+			<name>yellow_brick_8</name>
 			<uri>model://yellow_brick</uri>
 			<pose>0.7745 0 20 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>yellow_brick_09</name>
+			<name>yellow_brick_9</name>
 			<uri>model://yellow_brick</uri>
 			<pose>2.324 0 20 0 0 0</pose>
 		</include>
@@ -231,55 +231,55 @@
 
 		<!-- Green Row 1 -->
 		<include>
-			<name>green_brick_01</name>
+			<name>green_brick_1</name>
 			<uri>model://green_brick</uri>
 			<pose>-10.0715 0 21.1 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>green_brick_02</name>
+			<name>green_brick_2</name>
 			<uri>model://green_brick</uri>
 			<pose>-8.522 0 21.1 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>green_brick_03</name>
+			<name>green_brick_3</name>
 			<uri>model://green_brick</uri>
 			<pose>-6.9725 0 21.1 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>green_brick_04</name>
+			<name>green_brick_4</name>
 			<uri>model://green_brick</uri>
 			<pose>-5.423 0 21.1 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>green_brick_05</name>
+			<name>green_brick_5</name>
 			<uri>model://green_brick</uri>
 			<pose>-3.8735 0 21.1 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>green_brick_06</name>
+			<name>green_brick_6</name>
 			<uri>model://green_brick</uri>
 			<pose>-2.324 0 21.1 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>green_brick_07</name>
+			<name>green_brick_7</name>
 			<uri>model://green_brick</uri>
 			<pose>-0.7745 0 21.1 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>green_brick_08</name>
+			<name>green_brick_8</name>
 			<uri>model://green_brick</uri>
 			<pose>0.7745 0 21.1 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>green_brick_09</name>
+			<name>green_brick_9</name>
 			<uri>model://green_brick</uri>
 			<pose>2.324 0 21.1 0 0 0</pose>
 		</include>
@@ -401,55 +401,55 @@
 
 		<!-- Orange Row 1 -->
 		<include>
-			<name>orange_brick_01</name>
+			<name>orange_brick_1</name>
 			<uri>model://orange_brick</uri>
 			<pose>-10.0715 0 22.2 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>orange_brick_02</name>
+			<name>orange_brick_2</name>
 			<uri>model://orange_brick</uri>
 			<pose>-8.522 0 22.2 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>orange_brick_03</name>
+			<name>orange_brick_3</name>
 			<uri>model://orange_brick</uri>
 			<pose>-6.9725 0 22.2 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>orange_brick_04</name>
+			<name>orange_brick_4</name>
 			<uri>model://orange_brick</uri>
 			<pose>-5.423 0 22.2 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>orange_brick_05</name>
+			<name>orange_brick_5</name>
 			<uri>model://orange_brick</uri>
 			<pose>-3.8735 0 22.2 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>orange_brick_06</name>
+			<name>orange_brick_6</name>
 			<uri>model://orange_brick</uri>
 			<pose>-2.324 0 22.2 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>orange_brick_07</name>
+			<name>orange_brick_7</name>
 			<uri>model://orange_brick</uri>
 			<pose>-0.7745 0 22.2 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>orange_brick_08</name>
+			<name>orange_brick_8</name>
 			<uri>model://orange_brick</uri>
 			<pose>0.7745 0 22.2 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>orange_brick_09</name>
+			<name>orange_brick_9</name>
 			<uri>model://orange_brick</uri>
 			<pose>2.324 0 22.2 0 0 0</pose>
 		</include>
@@ -571,55 +571,55 @@
 
 		<!-- Red Row 1 -->
 		<include>
-			<name>red_brick_01</name>
+			<name>red_brick_1</name>
 			<uri>model://red_brick</uri>
 			<pose>-10.0715 0 23.3 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>red_brick_02</name>
+			<name>red_brick_2</name>
 			<uri>model://red_brick</uri>
 			<pose>-8.522 0 23.3 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>red_brick_03</name>
+			<name>red_brick_3</name>
 			<uri>model://red_brick</uri>
 			<pose>-6.9725 0 23.3 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>red_brick_04</name>
+			<name>red_brick_4</name>
 			<uri>model://red_brick</uri>
 			<pose>-5.423 0 23.3 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>red_brick_05</name>
+			<name>red_brick_5</name>
 			<uri>model://red_brick</uri>
 			<pose>-3.8735 0 23.3 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>red_brick_06</name>
+			<name>red_brick_6</name>
 			<uri>model://red_brick</uri>
 			<pose>-2.324 0 23.3 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>red_brick_07</name>
+			<name>red_brick_7</name>
 			<uri>model://red_brick</uri>
 			<pose>-0.7745 0 23.3 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>red_brick_08</name>
+			<name>red_brick_8</name>
 			<uri>model://red_brick</uri>
 			<pose>0.7745 0 23.3 0 0 0</pose>
 		</include>
 
 		<include>
-			<name>red_brick_09</name>
+			<name>red_brick_9</name>
 			<uri>model://red_brick</uri>
 			<pose>2.324 0 23.3 0 0 0</pose>
 		</include>

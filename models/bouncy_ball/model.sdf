@@ -26,7 +26,7 @@
 
             <contact>
               <ode>
-                <max_vel>999</max_vel>
+                <max_vel>50</max_vel>
               </ode>
             </contact>
 

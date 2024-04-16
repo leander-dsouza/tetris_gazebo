@@ -30,6 +30,7 @@
 
 #include <gazebo_msgs/ContactsState.h>
 #include <geometry_msgs/Twist.h>
+#include <yaml-cpp/yaml.h>
 
 #include <vector>
 #include <string>
@@ -82,8 +83,10 @@ class breakoutGazeboPlugin: public gazebo::WorldPlugin {
   void updateScore();
   void updateHighScore();
   void updateLives();
-  void spawnModel(std::string model_name, ignition::math::Pose3d pose, int tag);
-  void respawnBall();
+  void spawnModel(std::string model_name,
+    ignition::math::Pose3d pose, std::string tag);
+  void respawnBall(bool wait);
+  void respawnBricks();
 };
 
 #endif  // BREAKOUT_GAZEBO_BREAKOUTGAZEBOPLUGIN_H
