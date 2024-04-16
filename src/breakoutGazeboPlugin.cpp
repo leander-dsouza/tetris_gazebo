@@ -24,6 +24,11 @@
 #include <breakout_gazebo/breakoutGazeboPlugin.h>
 
 
+// make a collection of bash colours and their appropriate hex values
+std::map<std::string, std::string> bash_colours = {
+  {"black", "\033[0;30m"}, {"red", "\033[0;31m"}, {"green", "\033[0;32m"},
+  {"yellow", "\033[0;33m"}, {"blue", "\033[0;34m"}, {"magenta", "\033[0;35m"},
+  {"cyan", "\033[0;36m"}, {"white", "\033[0;37m"}, {"reset", "\033[0m"}};
 
 std::string getLiteralWord(int num) {
   switch (num) {
@@ -128,6 +133,15 @@ void breakoutGazeboPlugin::updateHighScore() {
     prev_highscore_tens_model_ = curr_tens_model + "4";
   }
 
+  // check if there are remaining are that's not prev_highscore_ones_model_
+  for (int i = 0; i < 10; i++) {
+    std::string model_name = getLiteralWord(i) + "5";
+    if (world_->ModelByName(model_name) &&
+      model_name != prev_highscore_ones_model_) {
+      deleteModel(model_name);
+    }
+  }
+
   if (curr_ones_model + "5" != prev_highscore_ones_model_) {
     deleteModel(prev_highscore_ones_model_);
     spawnModel(curr_ones_model, highscore_ones_pose_, "5");
@@ -172,14 +186,16 @@ void breakoutGazeboPlugin::updateScore() {
   if (score_ == 448) {
     respawnBricks();
     respawnBall(true);
-    ROS_INFO("Screen 2");
+    ROS_INFO_STREAM(
+      bash_colours["yellow"] << "Level 2" << bash_colours["reset"]);
     hit_counter_ = 0;
     red_hit_ = false;
     orange_hit_ = false;
   }
 
   if (score_ == 896) {
-    ROS_INFO("You Win");
+    ROS_INFO_STREAM(
+      bash_colours["green"] << "You Win!" << bash_colours["reset"]);
     respawnBricks();
     lives_ = 0;
     score_ = -1;
@@ -212,6 +228,14 @@ void breakoutGazeboPlugin::updateScore() {
     deleteModel(prev_tens_model_);
     spawnModel(curr_tens_model, tens_pose_, "1");
     prev_tens_model_ = curr_tens_model + "1";
+  }
+
+  // check if there are remaining ones model that is not prev_ones_model
+  for (int i = 0; i < 10; i++) {
+    std::string model_name = getLiteralWord(i) + "2";
+    if (world_->ModelByName(model_name) && model_name != prev_ones_model_) {
+      deleteModel(model_name);
+    }
   }
 
   if (curr_ones_model + "2" != prev_ones_model_) {
@@ -251,19 +275,29 @@ void breakoutGazeboPlugin::respawnBall(bool wait) {
 void breakoutGazeboPlugin::updateLives() {
   bool wait = false;
   lives_ += 1;
-  ROS_INFO("Lives: %d", lives_);
+  ROS_INFO_STREAM(
+    bash_colours["red"] << "Lives: " << lives_ << bash_colours["reset"]);
 
   if (lives_ == 4) {
     respawnBricks();
-    ROS_INFO("Game Over");
+    ROS_INFO_STREAM(
+      bash_colours["red"] << "Game Over" << bash_colours["reset"]);
     lives_ = 0;
-    score_ = -1;
+    score_ = 0;
     updateLives();
     updateScore();
     hit_counter_ = 0;
     red_hit_ = false;
     orange_hit_ = false;
     wait = true;
+  }
+
+  // check if there are remaining ones model that is not prev_lives_model
+  for (int i = 1; i < 4; i++) {
+    std::string model_name = getLiteralWord(i) + "7";
+    if (world_->ModelByName(model_name) && model_name != prev_lives_model_) {
+      deleteModel(model_name);
+    }
   }
 
   // delete the previous lives model
@@ -310,27 +344,34 @@ void breakoutGazeboPlugin::contactsCallback(
       hit_counter_ += 1;
 
       if (hit_counter_ == 4) {
-        // increase the speed of the ball by 150%
-        increaseBallSpeed(1.5);
-        ROS_INFO("Speed increased by 150 percent");
+        // increase the speed of the ball by 50%
+        increaseBallSpeed(0.5);
+        ROS_INFO_STREAM(
+          bash_colours["green"] << "Speed increased by 50 percent" <<
+          bash_colours["reset"]);
       }
-
       if (hit_counter_ == 12) {
-        // increase the speed of the ball by 150%
-        increaseBallSpeed(1.5);
-        ROS_INFO("Speed increased by 150 percent");
+        // increase the speed of the ball by 50%
+        increaseBallSpeed(0.5);
+        ROS_INFO_STREAM(
+          bash_colours["green"] << "Speed increased by 50 percent" <<
+          bash_colours["reset"]);
       }
-
       if (model_name.find("orange") != std::string::npos && !orange_hit_) {
         orange_hit_ = true;
-        // increase the speed of the ball by 150%
-        increaseBallSpeed(1.5);
-        ROS_INFO("Speed increased by 150 percent");
-      } else if (model_name.find("red") != std::string::npos && !red_hit_) {
+        // increase the speed of the ball by 50%
+        increaseBallSpeed(0.5);
+        ROS_INFO_STREAM(
+          bash_colours["green"] << "Speed increased by 50 percent" <<
+          bash_colours["reset"]);
+      }
+      if (model_name.find("red") != std::string::npos && !red_hit_) {
         red_hit_ = true;
-        // increase the speed of the ball by 150%
-        increaseBallSpeed(1.5);
-        ROS_INFO("Speed increased by 150 percent");
+        // increase the speed of the ball by 50%
+        increaseBallSpeed(0.5);
+        ROS_INFO_STREAM(
+          bash_colours["green"] << "Speed increased by 50 percent" <<
+          bash_colours["reset"]);
       }
       // ............................................
 

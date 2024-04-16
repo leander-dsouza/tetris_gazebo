@@ -5,9 +5,8 @@
 
 A ROS1 package to simulate the popular Atari's [Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)) arcade game in Gazebo.
 
-<p align=center>
-<img src="https://user-images.githubusercontent.com/45683974/236690701-362b65d1-8e90-448b-912d-c8eba77f547a.gif"/>
-</p>
+https://github.com/leander-dsouza/breakout_gazebo/assets/45683974/d485dfe2-0962-4cd4-acac-3b286704239d
+
 
 ## Installation
 
